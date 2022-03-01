@@ -31,7 +31,6 @@ engine:
     - punctuator
     - selector
     - navigator
-#    - fluency_editor
     - express_editor
   segmentors:
     - ascii_segmentor
@@ -53,13 +52,6 @@ speller:
   algebra:
     - abbrev/^([a-z]).+$/$1/
     - derive/^(.*)[z,sxjfrA]$/$1/
-#    - derive/aw/a/
-#    - derive/aa/a/
-#    - derive/ee/e/
-#    - derive/oo/o/
-#    - derive/uw/u/
-#    - derive/ow/o/
-#    - derive/dd/d/
 
 translator:
   dictionary: hannom-telex
@@ -101,6 +93,7 @@ translator:
     - 'xform êx ễ'
     - 'xform êr ể'
     - 'xform uw ư'
+    - 'xform w ư'
     - 'xform ưs ứ'
     - 'xform ưf ừ'
     - 'xform ưj ự'
@@ -142,14 +135,59 @@ translator:
     - 'xform yj ỵ'
     - 'xform yx ỹ'
     - 'xform yr ỷ'
+
+    # Special ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform uow ươ'
+    - 'xform ươw uow'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform quow quơ'
+    - 'xform quơw quow'
+    - 'xform huow huơ'
+    - 'xform thuow thuơ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Reciprocal
+    - 'xform phuow phươ'
+    - 'xform chuow chươ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Final modifiers
+    - 'xform huơm hươm'
+    - 'xform huơn hươn'
+    - 'xform huơc hươc'
+    - 'xform huơt hươt'
+    - 'xform huơp hươp'
+    - 'xform huớm hướm'
+    - 'xform huớn hướn'
+    - 'xform huớc hước'
+    - 'xform huớt hướt'
+    - 'xform huớp hướp'
+    - 'xform huờm hườm'
+    - 'xform huờn hườn'
+    - 'xform huờc hườc'
+    - 'xform huờt hườt'
+    - 'xform huờp hườp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huợm hượm'
+    - 'xform huợn hượn'
+    - 'xform huợc hược'
+    - 'xform huợt hượt'
+    - 'xform huợp hượp'
+
   comment_format:
     - 'xform ([aeiouâăôê])(ng|nh|ch)([sfjxr]) $1$3$2'
     - 'xform ([aeiouâăôê])([iunptcmy])([sfjxr]) $1$3$2'
     - 'xform ([ae])([ou])([sfjxr]) $1$3$2'
     - 'xform (aw|ow|uw)([iunptcmy])([sfjxr]) $1$3$2'
     - 'xform (aw|ow|uw)(ng|nh|ch)([sfjxr]) $1$3$2'
-#    - 'xform z ，【𡨸標準】'
-#    - 'xform , ，【𡨸異體】'
     - 'xform z '
     - 'xform dd đ'
     - 'xform aa â'
@@ -177,6 +215,7 @@ translator:
     - 'xform êx ễ'
     - 'xform êr ể'
     - 'xform uw ư'
+    - 'xform w ư'
     - 'xform ưs ứ'
     - 'xform ưf ừ'
     - 'xform ưj ự'
@@ -218,6 +257,52 @@ translator:
     - 'xform yj ỵ'
     - 'xform yx ỹ'
     - 'xform yr ỷ'
+
+    # Special ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform uow ươ'
+    - 'xform ươw uow'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform quow quơ'
+    - 'xform quơw quow'
+    - 'xform huow huơ'
+    - 'xform thuow thuơ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Reciprocal
+    - 'xform phuow phươ'
+    - 'xform chuow chươ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Final modifiers
+    - 'xform huơm hươm'
+    - 'xform huơn hươn'
+    - 'xform huơc hươc'
+    - 'xform huơt hươt'
+    - 'xform huơp hươp'
+    - 'xform huớm hướm'
+    - 'xform huớn hướn'
+    - 'xform huớc hước'
+    - 'xform huớt hướt'
+    - 'xform huớp hướp'
+    - 'xform huờm hườm'
+    - 'xform huờn hườn'
+    - 'xform huờc hườc'
+    - 'xform huờt hườt'
+    - 'xform huờp hườp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huợm hượm'
+    - 'xform huợn hượn'
+    - 'xform huợc hược'
+    - 'xform huợt hượt'
+    - 'xform huợp hượp'
     
 reverse_lookup:
   dictionary: cangjie5
@@ -262,6 +347,7 @@ reverse_lookup:
     - 'xform êx ễ'
     - 'xform êr ể'
     - 'xform uw ư'
+    - 'xform w ư'
     - 'xform ưs ứ'
     - 'xform ưf ừ'
     - 'xform ưj ự'
@@ -303,6 +389,52 @@ reverse_lookup:
     - 'xform yj ỵ'
     - 'xform yx ỹ'
     - 'xform yr ỷ'
+    
+    # Special ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform uow ươ'
+    - 'xform ươw uow'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase
+    - 'xform quow quơ'
+    - 'xform quơw quow'
+    - 'xform huow huơ'
+    - 'xform thuow thuơ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Reciprocal
+    - 'xform phuow phươ'
+    - 'xform chuow chươ'
+
+    # Special uơ/ươ vowel nuclei rules - Uppercase and Lowercase - Final modifiers
+    - 'xform huơm hươm'
+    - 'xform huơn hươn'
+    - 'xform huơc hươc'
+    - 'xform huơt hươt'
+    - 'xform huơp hươp'
+    - 'xform huớm hướm'
+    - 'xform huớn hướn'
+    - 'xform huớc hước'
+    - 'xform huớt hướt'
+    - 'xform huớp hướp'
+    - 'xform huờm hườm'
+    - 'xform huờn hườn'
+    - 'xform huờc hườc'
+    - 'xform huờt hườt'
+    - 'xform huờp hườp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huởm hưởm'
+    - 'xform huởn hưởn'
+    - 'xform huởc hưởc'
+    - 'xform huởt hưởt'
+    - 'xform huởp hưởp'
+    - 'xform huợm hượm'
+    - 'xform huợn hượn'
+    - 'xform huợc hược'
+    - 'xform huợt hượt'
+    - 'xform huợp hượp'
   
 simplifier:
   tips: all
