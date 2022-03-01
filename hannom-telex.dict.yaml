@@ -9,14 +9,14 @@
 # - https://hvdic.thivien.net/rad-hv
 #
 
----		
+---
 name: hannom-telex
 version: "2013.07.10"		
 sort: original		
 use_preset_vocabulary: false
 max_phrase_length: 7		
 min_phrase_weight: 100		
-...		
+...
 
 漢越辭典摘引	hans vieetj tuwf ddieenr trichs daanx	10000	
 三千大千世界	tamz thieenz ddaij thieenz thees giowis	10000	
