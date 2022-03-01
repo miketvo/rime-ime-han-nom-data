@@ -4,9 +4,9 @@
 # Mike Vo 武祥明
 #
 # Data sources:
-# - https://chunom.org/pages/standard/
-# - https://vi.wiktionary.org/wiki/
-# - https://hvdic.thivien.net/rad-hv
+# - https://chunom.org/pages/standard/ (General list, including frequency data)
+# - https://vi.wiktionary.org/wiki/ (Syllabic-oriented data)
+# - https://hvdic.thivien.net/rad-hv (Stroke-oriented data)
 #
 
 ---
