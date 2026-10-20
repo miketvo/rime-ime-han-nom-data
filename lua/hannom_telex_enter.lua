@@ -189,6 +189,27 @@ end
 
 M.punctuation_needs_space = punctuation_needs_space
 
+local incomplete_onsets = {
+  b = true, c = true, ch = true, d = true, dd = true,
+  g = true, gh = true, gi = true, h = true, k = true, kh = true,
+  l = true, m = true, n = true, ng = true, ngh = true, nh = true,
+  p = true, ph = true, q = true, qu = true, r = true, s = true,
+  t = true, th = true, tr = true, v = true, x = true
+}
+
+local function split_trailing_onset(token, trie)
+  -- Keep an incomplete next-word onset out of the preceding syllable. The
+  -- current run may fail whole-string segmentation while its prefix is valid.
+  for cut = #token - 1, math.max(1, #token - 3), -1 do
+    local tail = token:sub(cut + 1):lower()
+    if incomplete_onsets[tail] then
+      local prefix = segment_chunk(token:sub(1, cut), trie)
+      if prefix then return prefix, cut end
+    end
+  end
+  return nil
+end
+
 local function convert_input(input, source, trie)
   input = input or ""
   source = source or input
@@ -210,14 +231,32 @@ local function convert_input(input, source, trie)
       local token = input:sub(i, finish - 1)
       local source_token = source:sub(i, finish - 1)
       local converted = segment_chunk(token, trie)
-      -- Unknown names and loanwords remain intact while known syllables around
-      -- them are still converted.
+      local incomplete_cut
+      if not converted then
+        converted, incomplete_cut = split_trailing_onset(token, trie)
+      end
+      -- Keep unknown names and loanwords intact. If only a trailing onset is
+      -- incomplete, retain the already recognized syllables and show that
+      -- onset separately until more input arrives.
       if converted then
         for index, syllable in ipairs(converted) do
           if index > 1 then append(" ") end
           local typed_syllable = source_token:sub(syllable.start, syllable.finish)
           append(apply_case(syllable.text, typed_syllable))
         end
+        if incomplete_cut then
+          append(" ")
+          local tail = source_token:sub(incomplete_cut + 1)
+          if token:sub(incomplete_cut + 1):lower() == "dd" then
+            append(apply_case("đ", tail))
+          else
+            append(tail)
+          end
+        end
+      elseif token:lower() == "dd" then
+        -- `dd` is a valid Telex letter transformation even before a vowel is
+        -- typed, so show đ/Đ while the syllable is still incomplete.
+        append(apply_case("đ", source_token))
       else
         append(source_token)
       end
