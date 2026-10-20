@@ -61,17 +61,21 @@ function M.func(segmentation, env)
     return false
   end
 
+  if char:match("^%s$") or char == "'" then
+    -- Skip a leading delimiter by itself. If it is grouped with the following
+    -- letters, the translator sees a spelling that begins with a separator
+    -- and can lose the first letter's candidates. Internal delimiters stay
+    -- inside the full lookup span below.
+    add_segment(segmentation, start, start + 1, {"phony"})
+    return false
+  end
+
   local phrase = suffix:match("^([A-Za-z ']+)")
   if phrase and phrase:match("[A-Za-z]") then
     -- Keep manually delimited syllables in the same lookup segment. The
     -- delimiter guides Vietnamese preview parsing but must not hide the
     -- preceding code from Han-Nom and phrase lookup.
     add_segment(segmentation, start, start + #phrase, {"abc"})
-    return false
-  end
-
-  if char:match("^%s$") or char == "'" then
-    add_segment(segmentation, start, start + 1, {"phony"})
     return false
   end
 
