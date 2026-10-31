@@ -1,0 +1,8 @@
+# Rime runtime and user-specific files
+build/
+*.userdb/
+user.yaml
+default.custom.yaml
+installation.yaml
+*.bak-*
+*.log
